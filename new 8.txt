@@ -1,0 +1,46 @@
+multiplier = 10000
+symbol = "CUS"
+newLine = []
+deli=""
+y=""
+strike_price=0.0
+symbolname=""
+output=0
+
+
+with open("input.txt") as f:
+    try:
+        for line in f:
+            deli=line.split("|")
+            for x in deli:
+                if '202' in x:
+                    y = x.split("=")
+                    if y[0] == '202':
+                        print(y[0],y[1])
+                        strike_p=y[1]
+                        strike_price=float(strike_p)
+                        output = strike_price * multiplier
+                        print(output)
+            # for line1 in f:
+            #     deli1=line1.split("|")
+            #     for a in deli1:
+            #         if "55" in a:
+            #             b=a.split("=")
+            #             if b[0]=="55":
+            #                 print(b[0],b[1])
+            #                 symbolname=b[1]
+            #                 #print(symbolname)
+            if any(s in line for s in symbol):
+                newLine.append(line)
+
+        move=newLine
+       # print(newLine)
+    except:
+        pass
+theFile = open('line-out.txt','w')
+for line in newLine:
+    theFile.write(line)
+theFile.close()
+#print("done!")
+
+
